@@ -8,34 +8,35 @@ import javax.swing.JScrollPane;
 
 public class SnakeGUI extends JFrame{
 
-    private final JTextArea textArea1; // displays demo string
-    private final JTextArea textArea2; // highlighted text is copied here
-    private final JButton copyJButton; // initiates copying of text
+    private final JTextArea displayArea; // displays demo string
+    private final JButton startButton; // initiates copying of text
 
     //No argument constructor
     public SnakeGUI(){
         super("Snake");
-        Box box = Box.createHorizontalBox(); // create box
+        Box box = Box.createVerticalBox(); // create box
         String demo = "This is a demo string to\n" +
                 "illustrate copying text\nfrom one textarea to \n" +
                 "another textarea using an\nexternal event\n";
-        textArea1 = new JTextArea(demo, 10, 15);
-        box.add(new JScrollPane(textArea1)); // add scrollpane
+        displayArea = new JTextArea(demo, 20, 20);
+        displayArea.setEditable(false);
+        box.add(displayArea); // add scrollpane
 
-        copyJButton = new JButton("Copy >>>"); // create copy button
-        box.add(copyJButton); // add copy button to box
-        copyJButton.addActionListener(
+        startButton = new JButton("Start"); // create copy button
+        box.add(startButton); // add copy button to box
+        startButton.addActionListener(
                 new ActionListener() {
-                    // set text in textArea2 to selected text from textArea1
+                    // set text in textArea2 to selected text from displayArea
                     @Override
                     public void actionPerformed(ActionEvent event) {
-                        textArea2.setText(textArea1.getSelectedText());
+                        //reset screen
+//                        startButton.setText("Stop");
+                        if (startButton.getText() == "Start")
+                            startButton.setText("Stop");
+                        else
+                            startButton.setText("Start");
                     }
                 });
-
-            textArea2 = new JTextArea(10, 15);
-            textArea2.setEditable(false);
-            box.add(new JScrollPane(textArea2)); // add scrollpane
 
         add(box);
     }

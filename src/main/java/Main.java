@@ -10,11 +10,11 @@ public class Main {
         //Gui Test
         SnakeGUI textAreaFrame = new SnakeGUI();
         textAreaFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        textAreaFrame.setSize(425, 200);
+        textAreaFrame.setSize(500, 500);
         textAreaFrame.setVisible(true);
     }
 
     public static void startGame(){
-        JOptionPane.showMessageDialog(null,"Hey world");
+        //
     }
 }
