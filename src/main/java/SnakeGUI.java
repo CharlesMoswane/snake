@@ -23,25 +23,21 @@ public class SnakeGUI extends JFrame{
 
         startButton = new JButton("Start"); // create copy button
         box.add(startButton); // add copy button to box
-        startButton.addActionListener(
-                new ActionListener() {
-                    // set text in textArea2 to selected text from displayArea
-                    @Override
-                    public void actionPerformed(ActionEvent event) {
-
-                        if (startButton.getText() == "Start") {
-                            startButton.setText("Stop");
-                            startLabel.setVisible(true);
-                        }
-                        else {
-                            startButton.setText("Start");
-                            startLabel.setVisible(false);
-                        }
-                    }
-                });
+        startButton.addActionListener(this::actionPerformed);
 
         add(box);
     }
 
+    public void actionPerformed(ActionEvent event) {
+
+        if (startButton.getText() == "Start") {
+            startButton.setText("Stop");
+            startLabel.setVisible(true);
+        }
+        else {
+            startButton.setText("Start");
+            startLabel.setVisible(false);
+        }
+    }
 
 }
