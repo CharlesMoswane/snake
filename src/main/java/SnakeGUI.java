@@ -29,7 +29,7 @@ public class SnakeGUI extends JFrame{
 
     public void actionPerformed(ActionEvent event) {
 
-        if (startButton.getText() == "Start") {
+        if (startButton.getText().equals("Start")) {
             startButton.setText("Stop");
             startLabel.setVisible(true);
         }
