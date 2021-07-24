@@ -9,26 +9,25 @@ public class SnakeGUI extends JFrame{
 
     private final JButton startButton; // initiates copying of text
     private final JLabel startLabel;
+    private final JLabel startLabel2;
+    private final GridLayout gridLayout;
 
     //No argument constructor
     public SnakeGUI(){
-        super("Snake");
-        Box box = Box.createVerticalBox(); // create box
-
+        super("Snake"); // create box
+        gridLayout = new GridLayout(2,2);
         startLabel = new JLabel("X");
-        startLabel.setSize(20,20);
-        startLabel.setBackground(Color.black);
-        box.add(startLabel);
+        startLabel2 = new JLabel("X");
+        startButton = new JButton("Stop");
 
-        startButton = new JButton("Start"); // create copy button
-        box.add(startButton); // add copy button to box
         startButton.addActionListener(this::actionPerformed);
-
-        add(box);
+        setLayout(gridLayout);
+        add(startLabel);
+        add(startLabel2);
+        add(startButton);
     }
 
     public void actionPerformed(ActionEvent event) {
-
         if (startButton.getText().equals("Start")) {
             startButton.setText("Stop");
             startLabel.setVisible(true);

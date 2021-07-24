@@ -8,10 +8,10 @@ public class Main {
         startGame();
 
         //Gui Test
-        SnakeGUI textAreaFrame = new SnakeGUI();
-        textAreaFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        textAreaFrame.setSize(500, 500);
-        textAreaFrame.setVisible(true);
+        SnakeGUI snakeFrame = new SnakeGUI();
+        snakeFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        snakeFrame.setSize(500, 500);
+        snakeFrame.setVisible(true);
     }
 
     public static void startGame(){
