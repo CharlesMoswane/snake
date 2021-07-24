@@ -3,13 +3,11 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.Box;
 import javax.swing.JFrame;
-import javax.swing.JTextArea;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
 public class SnakeGUI extends JFrame{
 
-    private final JTextArea displayArea; // displays demo string
     private final JButton startButton; // initiates copying of text
     private final JLabel startLabel;
 
@@ -17,13 +15,10 @@ public class SnakeGUI extends JFrame{
     public SnakeGUI(){
         super("Snake");
         Box box = Box.createVerticalBox(); // create box
-        String demo = "Snakes poisson. Pitbulls are the pits.";
-        displayArea = new JTextArea(demo, 40, 40);
-        displayArea.setEditable(false);
-        box.add(displayArea); // add scrollpane
 
         startLabel = new JLabel("X");
-        startLabel.setSize(1,1);
+        startLabel.setSize(20,20);
+        startLabel.setBackground(Color.black);
         box.add(startLabel);
 
         startButton = new JButton("Start"); // create copy button
