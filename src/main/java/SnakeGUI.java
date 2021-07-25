@@ -69,8 +69,6 @@ public class SnakeGUI extends JFrame implements ActionListener {
     }
 
     private void printSnake(){
-
-
         labels[snakeBody.peekFirst().getX()][snakeBody.peekFirst().getY()].setVisible(false);
 //        snake.move();
         labels[snakeBody.peekLast().getX()][snakeBody.peekLast().getY()].setVisible(false);
