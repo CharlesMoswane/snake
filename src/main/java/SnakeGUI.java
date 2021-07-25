@@ -9,12 +9,16 @@ public class SnakeGUI extends JFrame{
 
     private final GridLayout gridLayout;
     private final JLabel[][] labels;
+    private final SnakeFood food;
+    private final int boardSize;
 
     //No argument constructor
-    public SnakeGUI(){
+    public SnakeGUI(int boardSize){
         super("Snake");
-        gridLayout = new GridLayout(20,20);
+        this.boardSize = boardSize;
+        gridLayout = new GridLayout(boardSize,boardSize);
         labels = new JLabel[20][20];
+        food = new SnakeFood(boardSize);
 
         setGrid(labels);
         labels[17][15].setVisible(true);

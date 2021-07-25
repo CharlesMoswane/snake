@@ -8,7 +8,7 @@ public class Main {
         startGame();
 
         //Gui Test
-        SnakeGUI snakeFrame = new SnakeGUI();
+        SnakeGUI snakeFrame = new SnakeGUI(20);
         snakeFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         snakeFrame.setSize(500, 500);
         snakeFrame.setVisible(true);
