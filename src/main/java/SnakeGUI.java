@@ -10,18 +10,32 @@ public class SnakeGUI extends JFrame implements ActionListener {
     private final SnakeFood food;
     private final int boardSize;
     private Timer timer;
+    private int foodX;
+    private int foodY;
 
-    //No argument constructor
+    //Experiment 1
+//    private int[][] snake;
+
     public SnakeGUI(int boardSize){
         super("Snake");
         this.boardSize = boardSize;
         gridLayout = new GridLayout(boardSize,boardSize);
-        labels = new JLabel[20][20];
+        labels = new JLabel[boardSize][boardSize];
         food = new SnakeFood(boardSize);
         timer = new Timer(1000,this);
+        foodX = food.generateXPos();
+        foodY = food.generateYPos();
+
+        //Experiment 1
+//        snake = new int[4][4];
+
 
         setGrid(labels);
         setLayout(gridLayout);
+        labels[foodX][foodX].setVisible(true);
+        for (int i = 6; i < 15; i++){
+            labels[2][i].setVisible(true);
+        }
         play();
     }
 
@@ -41,6 +55,9 @@ public class SnakeGUI extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        labels[food.generateXPos()][food.generateYPos()].setVisible(true);
+        labels[foodX][foodX].setVisible(false);
+        foodX = food.generateXPos();
+        foodY = food.generateYPos();
+        labels[foodX][foodX].setVisible(true);
     }
 }
