@@ -32,7 +32,7 @@ public class SnakeGUI extends JFrame implements ActionListener {
 
         setGrid(labels);
         setLayout(gridLayout);
-        labels[foodX][foodX].setVisible(true);
+        labels[foodX][foodY].setVisible(true);
         for (int i = 6; i < 15; i++){
             labels[2][i].setVisible(true);
         }
@@ -55,9 +55,9 @@ public class SnakeGUI extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        labels[foodX][foodX].setVisible(false);
+        labels[foodX][foodY].setVisible(false);
         foodX = food.generateXPos();
         foodY = food.generateYPos();
-        labels[foodX][foodX].setVisible(true);
+        labels[foodX][foodY].setVisible(true);
     }
 }
