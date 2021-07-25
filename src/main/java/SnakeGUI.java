@@ -7,35 +7,29 @@ import javax.swing.JLabel;
 
 public class SnakeGUI extends JFrame{
 
-    private final JButton startButton; // initiates copying of text
-    private final JLabel startLabel;
-    private final JLabel startLabel2;
     private final GridLayout gridLayout;
+    private final JLabel[][] labels;
 
     //No argument constructor
     public SnakeGUI(){
-        super("Snake"); // create box
-        gridLayout = new GridLayout(2,2);
-        startLabel = new JLabel("X");
-        startLabel2 = new JLabel("X");
-        startButton = new JButton("Stop");
+        super("Snake");
+        gridLayout = new GridLayout(20,20);
+        labels = new JLabel[20][20];
 
-        startButton.addActionListener(this::actionPerformed);
+        setGrid(labels);
+        labels[17][15].setVisible(true);
         setLayout(gridLayout);
-        add(startLabel);
-        add(startLabel2);
-        add(startButton);
     }
 
-    public void actionPerformed(ActionEvent event) {
-        if (startButton.getText().equals("Start")) {
-            startButton.setText("Stop");
-            startLabel.setVisible(true);
+    private void setGrid(JLabel[][] labels){
+        for (int i = 0; i < labels.length; i++){
+            for (int j = 0; j < labels.length; j++){
+                labels[i][j] = new JLabel("X");
+                add(labels[i][j]);
+                labels[i][j].setVisible(false);
+            }
         }
-        else {
-            startButton.setText("Start");
-            startLabel.setVisible(false);
-        }
+        labels[15][17].setVisible(true);
     }
 
 }
