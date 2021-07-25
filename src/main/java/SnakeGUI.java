@@ -2,6 +2,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
+import java.util.List;
 
 public class SnakeGUI extends JFrame implements ActionListener {
 
@@ -12,6 +13,8 @@ public class SnakeGUI extends JFrame implements ActionListener {
     private Timer timer;
     private int foodX;
     private int foodY;
+    private Snake snake;
+    private List<Snake.SnakeComponent> snakeBody;
 
     //Experiment 1
 //    private int[][] snake;
@@ -25,6 +28,8 @@ public class SnakeGUI extends JFrame implements ActionListener {
         timer = new Timer(1000,this);
         foodX = food.generateXPos();
         foodY = food.generateYPos();
+        snake = new Snake(7,3);
+        snakeBody = snake.getSnake();
 
         //Experiment 1
 //        snake = new int[4][4];
@@ -33,8 +38,9 @@ public class SnakeGUI extends JFrame implements ActionListener {
         setGrid(labels);
         setLayout(gridLayout);
         labels[foodX][foodY].setVisible(true);
-        for (int i = 6; i < 15; i++){
-            labels[2][i].setVisible(true);
+
+        for (Snake.SnakeComponent snakeComponent: snakeBody){
+            labels[snakeComponent.getX()][snakeComponent.getY()].setVisible(true);
         }
         play();
     }
