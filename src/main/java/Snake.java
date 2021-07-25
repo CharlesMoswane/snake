@@ -3,7 +3,7 @@ import java.util.List;
 
 public class Snake {
 
-    private List<SnakeComponent> snake;
+    private LinkedList<SnakeComponent> snake;
 
     private int size;
     private int startingRow;
@@ -18,11 +18,25 @@ public class Snake {
         }
     }
 
-    public List<SnakeComponent> getSnake(){
+    public LinkedList<SnakeComponent> getSnake(){
         return snake;
     }
 
+    //(int direction)
     public void move(){
+//        switch (direction){
+//            case 1:
+//                break;
+//            case 2:
+//                break;
+//            case 3:
+//                break;
+//            default:
+//                break;
+//        }
+//        for (int i = 0; i< size; i++){
+//            snake.add(new SnakeComponent(startingRow, i));
+//        }
 
     }
 
