@@ -1,16 +1,15 @@
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import javax.swing.Box;
-import javax.swing.JFrame;
-import javax.swing.JButton;
-import javax.swing.JLabel;
+import java.awt.event.ActionListener;
+import javax.swing.*;
 
-public class SnakeGUI extends JFrame{
+public class SnakeGUI extends JFrame implements ActionListener {
 
     private final GridLayout gridLayout;
     private final JLabel[][] labels;
     private final SnakeFood food;
     private final int boardSize;
+    private Timer timer;
 
     //No argument constructor
     public SnakeGUI(int boardSize){
@@ -19,10 +18,11 @@ public class SnakeGUI extends JFrame{
         gridLayout = new GridLayout(boardSize,boardSize);
         labels = new JLabel[20][20];
         food = new SnakeFood(boardSize);
+        timer = new Timer(1000,this);
 
         setGrid(labels);
-        labels[17][15].setVisible(true);
         setLayout(gridLayout);
+        play();
     }
 
     private void setGrid(JLabel[][] labels){
@@ -33,7 +33,14 @@ public class SnakeGUI extends JFrame{
                 labels[i][j].setVisible(false);
             }
         }
-        labels[15][17].setVisible(true);
     }
 
+    private void play(){
+        timer.start();
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        labels[food.generateXPos()][food.generateYPos()].setVisible(true);
+    }
 }
