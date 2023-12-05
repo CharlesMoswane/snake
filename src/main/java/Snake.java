@@ -2,11 +2,11 @@ import java.util.LinkedList;
 
 public class Snake {
 
-    public Snake(){
+    public Snake() {
 
     }
 
-    public void move(){
+    public void move() {
 
     }
 
@@ -15,7 +15,8 @@ public class Snake {
 
     class SnakeComponent {
         private int xPos, yPos;
-        public SnakeComponent(int xPos, int yPos){
+
+        public SnakeComponent(int xPos, int yPos) {
             this.xPos = xPos;
             this.yPos = yPos;
         }
