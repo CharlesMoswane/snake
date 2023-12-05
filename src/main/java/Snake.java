@@ -2,8 +2,13 @@ import java.util.LinkedList;
 
 public class Snake {
 
-    public Snake() {
+    private LinkedList<SnakeComponent> snakeBody;
+    private Direction direction;
 
+    public Snake(int x, int y, int boardSize) {
+        snakeBody = new LinkedList<>();
+        snakeBody.add(new SnakeComponent(x, y));
+        direction = Direction.RIGHT;
     }
 
     public void move() {
