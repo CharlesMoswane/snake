@@ -16,6 +16,7 @@ public class Snake {
     }
 
     public LinkedList<SnakeComponent> getSnake() {
+        return snakeBody;
     }
 
     public void setDirection(Direction direction) {
