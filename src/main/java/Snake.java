@@ -22,6 +22,9 @@ public class Snake {
         this.direction = direction;
     }
 
+    public void eat(SnakeFood food) {
+    }
+
     class SnakeComponent {
         private int xPos, yPos;
 
