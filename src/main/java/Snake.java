@@ -8,7 +8,7 @@ public class Snake {
     public Snake(int x, int y, int boardSize) {
         snakeBody = new LinkedList<>();
         snakeBody.add(new SnakeComponent(x, y));
-        direction = Direction.RIGHT;
+        this.direction = Direction.RIGHT;
     }
 
     public void move() {
@@ -16,6 +16,10 @@ public class Snake {
     }
 
     public LinkedList<SnakeComponent> getSnake() {
+    }
+
+    public void setDirection(Direction direction) {
+        this.direction = direction;
     }
 
     class SnakeComponent {
