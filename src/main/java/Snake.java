@@ -11,19 +11,19 @@ public class Snake {
         this.direction = Direction.RIGHT;
     }
 
-    public void move() {
-
+    public void eat(SnakeFood food) {
     }
 
-    public LinkedList<SnakeComponent> getSnake() {
-        return snakeBody;
+    public void move() {
+
     }
 
     public void setDirection(Direction direction) {
         this.direction = direction;
     }
 
-    public void eat(SnakeFood food) {
+    public LinkedList<SnakeComponent> getSnake() {
+        return snakeBody;
     }
 
     class SnakeComponent {
