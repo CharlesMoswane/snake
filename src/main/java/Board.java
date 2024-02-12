@@ -1,11 +1,11 @@
 import javax.swing.*;
 
 public class Board extends JFrame {
-    private JLabel[][] board;
+    private final JLabel[][] board;
 
     public Board() {
         setTitle("Snake");
-        setSize(300, 300);
+        setSize(600, 600);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
