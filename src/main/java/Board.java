@@ -29,4 +29,12 @@ public class Board extends JFrame {
 
         add(panel);
     }
+
+    public void setVisible(int x, int y){
+        board[x][y].setVisible(true);
+    }
+
+    public void setInvisible(int x, int y){
+        board[x][y].setVisible(false);
+    }
 }
