@@ -5,7 +5,7 @@ public class Board extends JFrame {
 
     public Board() {
         setTitle("Snake");
-        setSize(600, 600);
+        setSize(500, 500);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
