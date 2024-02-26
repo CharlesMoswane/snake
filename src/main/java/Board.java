@@ -5,7 +5,7 @@ public class Board extends JFrame {
 
     public Board() {
         setTitle("Snake");
-        setSize(600, 600);
+        setSize(500, 500);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -29,7 +29,7 @@ public class Board extends JFrame {
 
         add(panel);
     }
-
+  
     public void drawSnake(Snake snake) {
         for (int i = 0; i < 20; i++) {
             for (int j = 0; j < 20; j++) {
@@ -39,5 +39,4 @@ public class Board extends JFrame {
         for (SnakeComponent snakeComponent : snake.getSnake()) {
             board[snakeComponent.getX()][snakeComponent.getY()].setVisible(true);
         }
-    }
 }
