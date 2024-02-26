@@ -1,12 +1,10 @@
-import snake.Snake;
-
 import javax.swing.*;
 
 public class Board extends JFrame {
     private final JLabel[][] board;
 
     public Board() {
-        setTitle("snake.Snake");
+        setTitle("Snake");
         setSize(600, 600);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -38,7 +36,7 @@ public class Board extends JFrame {
                 board[i][j].setVisible(false);
             }
         }
-        for (snake.SnakeComponent snakeComponent : snakeBody) {
+        for (SnakeComponent snakeComponent : snake.getSnake()) {
             board[snakeComponent.getX()][snakeComponent.getY()].setVisible(true);
         }
     }
