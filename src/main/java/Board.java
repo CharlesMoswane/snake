@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.util.LinkedList;
 
 public class Board extends JFrame {
     private final JLabel[][] board;
@@ -28,5 +29,16 @@ public class Board extends JFrame {
         }
 
         add(panel);
+    }
+
+    public void drawSnake(LinkedList<Snake.SnakeComponent> snakeBody) {
+        for (int i = 0; i < 20; i++) {
+            for (int j = 0; j < 20; j++) {
+                board[i][j].setVisible(false);
+            }
+        }
+        for (Snake.SnakeComponent snakeComponent : snakeBody) {
+            board[snakeComponent.getX()][snakeComponent.getY()].setVisible(true);
+        }
     }
 }
