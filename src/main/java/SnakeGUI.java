@@ -11,7 +11,7 @@ public class SnakeGUI extends JFrame implements ActionListener, KeyListener {
     private final JLabel[][] board;
     private SnakeFood food;
     private Snake snake;
-    private LinkedList<Snake.SnakeComponent> snakeBody;
+    private LinkedList<SnakeComponent> snakeBody;
     private int boardSize;
 
     public SnakeGUI(int boardSize){
@@ -44,7 +44,7 @@ public class SnakeGUI extends JFrame implements ActionListener, KeyListener {
                 board[i][j].setVisible(false);
             }
         }
-        for (Snake.SnakeComponent snakeComponent: snakeBody){
+        for (SnakeComponent snakeComponent: snakeBody){
             board[snakeComponent.getX()][snakeComponent.getY()].setVisible(true);
         }
     }
