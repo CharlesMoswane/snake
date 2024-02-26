@@ -1,3 +1,5 @@
+package snake;
+
 import java.util.LinkedList;
 
 public class Snake {
@@ -26,7 +28,7 @@ public class Snake {
         return snakeBody;
     }
 
-    class SnakeComponent {
+    public class SnakeComponent {
         private int xPos, yPos;
 
         public SnakeComponent(int xPos, int yPos) {

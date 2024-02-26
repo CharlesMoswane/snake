@@ -1,3 +1,5 @@
+import snake.Snake;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -15,7 +17,7 @@ public class SnakeGUI extends JFrame implements ActionListener, KeyListener {
     private int boardSize;
 
     public SnakeGUI(int boardSize){
-        super("Snake");
+        super("snake.Snake");
 
         this.boardSize = boardSize;
 

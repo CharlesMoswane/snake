@@ -1,11 +1,12 @@
+import snake.Snake;
+
 import javax.swing.*;
-import java.util.LinkedList;
 
 public class Board extends JFrame {
     private final JLabel[][] board;
 
     public Board() {
-        setTitle("Snake");
+        setTitle("snake.Snake");
         setSize(600, 600);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -31,13 +32,13 @@ public class Board extends JFrame {
         add(panel);
     }
 
-    public void drawSnake(LinkedList<Snake.SnakeComponent> snakeBody) {
+    public void drawSnake(Snake snake) {
         for (int i = 0; i < 20; i++) {
             for (int j = 0; j < 20; j++) {
                 board[i][j].setVisible(false);
             }
         }
-        for (Snake.SnakeComponent snakeComponent : snakeBody) {
+        for (snake.SnakeComponent snakeComponent : snakeBody) {
             board[snakeComponent.getX()][snakeComponent.getY()].setVisible(true);
         }
     }
