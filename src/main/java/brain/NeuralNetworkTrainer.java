@@ -18,7 +18,8 @@ public class NeuralNetworkTrainer {
     public void train(String filePath) {
         List<double[]> inputs = positionPersistenceManager.loadPositions(filePath).get("inputs");
         List<double[]> outputs = positionPersistenceManager.loadPositions(filePath).get("outputs");
-        double learningRate = 1 / (double) inputs.size();
+//        double learningRate = 1 / (double) inputs.size();
+        double learningRate = 0.1;
 
         for (int epoch = 0; epoch < inputs.size(); epoch++) {
             for (int i = 0; i < inputs.size(); i++) {
@@ -40,7 +41,7 @@ public class NeuralNetworkTrainer {
                         Neuron neuron = layer.getNeurons()[neuronIndex];
 
                         // Calculate derivative of the error with respect to the weights
-                        double delta = error[neuronIndex] * ActivationFunctions.sigmoidDerivative.apply(predictedOutput[neuronIndex]);
+                        double delta = error[neuronIndex] * ActivationFunctions.sigmoidDerivative.apply(neuron.getValue());
 
                         // Update weights
                         double[] weights = neuron.getWeights();

@@ -12,8 +12,18 @@ public class Main {
 
     public static void main(String[] args){
         startTraining();
-//        Game game = new Game();
-//        game.start();
+//        Trained = 500 + 1000 times already
+//        repeatTraining(1000);
+        Game game = new Game(false);
+//        Game game = new Game(true);
+        game.start();
+    }
+
+    private static void repeatTraining(int count) {
+        for (int i = 0; i < count; i++) {
+            System.out.println("Training iteration: " + (i + 1) + "/" + count);
+            startTraining();
+        }
     }
 
     private static void startTraining() {

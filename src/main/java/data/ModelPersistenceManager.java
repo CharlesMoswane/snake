@@ -27,6 +27,7 @@ public class ModelPersistenceManager {
 
         Gson gson = new GsonBuilder()
                 .registerTypeAdapter(activationFunctionType, new ActivationFunctionAdapter())
+                .setPrettyPrinting()
                 .create();
         return gson.toJson(network);
     }
