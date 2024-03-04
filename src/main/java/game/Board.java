@@ -112,8 +112,8 @@ public class Board extends JFrame implements KeyListener {
                 snake.setDirection(Direction.DOWN);
                 break;
         }
-
-        positionPersistenceManager.logPosition(snake, food);
+        generateFrame();
+//        positionPersistenceManager.logPosition(snake, food);
     }
 
     @Override

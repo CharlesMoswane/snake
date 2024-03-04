@@ -3,11 +3,7 @@ package brain;
 import data.ModelPersistenceManager;
 import data.PositionPersistenceManager;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class NeuralNetworkTrainer {
     private NeuralNetwork neuralNetwork;
@@ -19,34 +15,52 @@ public class NeuralNetworkTrainer {
         this.positionPersistenceManager = positionPersistenceManager;
     }
 
-    public void train(String filePath) {
+    public void train(String filePath, int epochs, double learningRate) {
         List<double[]> inputs = positionPersistenceManager.loadPositions(filePath).get("inputs");
         List<double[]> outputs = positionPersistenceManager.loadPositions(filePath).get("outputs");
 
+        for (int epoch = 0; epoch < inputs.size(); epoch++) {
+            for (int i = 0; i < inputs.size(); i++) {
+                double[] input = inputs.get(i);
+                double[] output = outputs.get(i);
 
-        for (int i = 0; i < inputs.size(); i++) {
-            double[] input = inputs.get(i);
-            double[] output = outputs.get(i);
+                // Forward propagation
+                double[] predictedOutput = neuralNetwork.forward(input);
 
-            double[] predictedOutput = neuralNetwork.forward(input);
-            double error = output[0] - predictedOutput[0];
+                // Calculate error
+                double[] error = calculateError(output, predictedOutput);
 
-            // Update the weights of the neural network using gradient descent
-            // This is a simplified example and does not include the actual implementation of gradient descent
-            for (Layer layer : neuralNetwork.getLayers()) {
-                for (Neuron neuron : layer.getNeurons()) {
-                    double[] weights = neuron.getWeights();
-                    double[] newWeights = new double[weights.length];
+                // Backpropagation
+                for (int layerIndex = neuralNetwork.getLayers().size() - 1; layerIndex >= 0; layerIndex--) {
+                    Layer layer = neuralNetwork.getLayers().get(layerIndex);
+                    double[] nextError = new double[layer.getNeurons().get(0).getWeights().length];
 
-                    for(int j = 0; j < weights.length; j++){
-                        newWeights[j] = weights[j] + 0.1 * error;
+                    for (int neuronIndex = 0; neuronIndex < layer.getNeurons().size(); neuronIndex++) {
+                        Neuron neuron = layer.getNeurons()[neuronIndex];
+
+                        // Calculate derivative of the error with respect to the weights
+                        double delta = error[neuronIndex] * neuron.getActivationFunction().applyDerivative(predictedOutput[neuronIndex]);
+
+                        // Update weights
+                        double[] weights = neuron.getWeights();
+                        for (int weightIndex = 0; weightIndex < weights.length; weightIndex++) {
+                            nextError[weightIndex] += weights[weightIndex] * delta;
+                            weights[weightIndex] += learningRate * delta * (layerIndex > 0 ? neuralNetwork.getLayers().get(layerIndex - 1).getNeurons().get(weightIndex).getOutput() : input[weightIndex]);
+                        }
                     }
 
-                    neuron.setWeights(newWeights);
+                    error = nextError;
                 }
             }
         }
 
         modelPersistenceManager.saveModelToJsonFile(neuralNetwork,"C:\\Users\\cmosw\\Desktop\\OneDrive\\My Documents\\8. Creation\\1. My Projects\\1. AI\\1. Snake\\1. Data\\models\\trained-model.json");
+    }
+
+    private static double[] calculateError(double[] output, double[] predictedOutput) {
+        double[] error = new double[output.length];
+        for (int j = 0; j < output.length; j++) {
+            error[j] = output[j] - predictedOutput[j];
+        }
     }
 }

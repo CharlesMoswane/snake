@@ -14,7 +14,7 @@ public class Game implements ActionListener {
     private final Snake snake;
     private final SnakeFood food;
     private final Board board;
-    private final Controller controller = new Controller(4,14,4);
+    private final Controller controller = new Controller(4,13,4);
 
     public Game(){
         int boardSize = 20;
@@ -39,9 +39,9 @@ public class Game implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-//        Direction direction = controller.getDirection((new int[]{ food.getXPos(), food.getYPos(), snake.getSnake().getFirst().getX(), snake.getSnake().getFirst().getY()}));
-//        System.out.println(direction);
-//        snake.setDirection(direction);
+        Direction direction = controller.getDirection((new int[]{ food.getXPos(), food.getYPos(), snake.getSnake().getFirst().getX(), snake.getSnake().getFirst().getY()}));
+        System.out.println(direction);
+        snake.setDirection(direction);
         board.generateFrame();
     }
 }

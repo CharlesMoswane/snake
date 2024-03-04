@@ -21,7 +21,23 @@ public class NeuralNetwork {
         for (Layer layer : layers) {
             values = layer.calculateValues(values);
         }
-        return values;
+        return softmax(values);
+    }
+
+    public double[] softmax(double[] values) {
+        double[] softmaxValues = new double[values.length];
+        double sum = 0.0;
+
+        for (int i = 0; i < values.length; i++) {
+            softmaxValues[i] = Math.exp(values[i]);
+            sum += softmaxValues[i];
+        }
+
+        for (int i = 0; i < softmaxValues.length; i++) {
+            softmaxValues[i] = softmaxValues[i] / sum;
+        }
+
+        return softmaxValues;
     }
 
     public List<Layer> getLayers() {

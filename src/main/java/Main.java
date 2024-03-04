@@ -12,8 +12,8 @@ public class Main {
 
     public static void main(String[] args){
         startTraining();
-        Game game = new Game();
-        game.start();
+//        Game game = new Game();
+//        game.start();
     }
 
     private static void startTraining() {

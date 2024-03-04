@@ -20,12 +20,12 @@ public class Controller {
         }
         ModelPersistenceManager modelPersistenceManager = new ModelPersistenceManager();
 
-//        modelPersistenceManager.saveModelToJsonFile(brain, dir + "\\model.json");
 //        brain = modelPersistenceManager.loadModelFromJsonFile(dir + "\\model.json");
         brain = modelPersistenceManager.loadModelFromJsonFile(dir + "\\trained-model.json");
 
 //        brain = new NeuralNetwork(inputNodes, new int[]{hiddenNodes, hiddenNodes, outputNodes},
 //                ActivationFunctions.sigmoid);
+//        modelPersistenceManager.saveModelToJsonFile(brain, dir + "\\model.json");
     }
 
     public Direction getDirection(int[] input) {
