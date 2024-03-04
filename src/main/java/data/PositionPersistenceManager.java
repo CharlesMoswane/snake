@@ -23,9 +23,7 @@ public class PositionPersistenceManager {
         try(BufferedWriter writer = new BufferedWriter(new FileWriter(dir + "\\keylog.json", true))){
             // Convert the snake and food objects to JSON strings
             String snakeJson = gson.toJson(snake);
-            System.out.println(snakeJson);
             String foodJson = gson.toJson(food);
-            System.out.println(foodJson);
 
             // Write the JSON strings to the file
             writer.write("Snake: " + snakeJson + ", Food: " + foodJson + "\n");
