@@ -15,9 +15,10 @@ public class NeuralNetworkTrainer {
         this.positionPersistenceManager = positionPersistenceManager;
     }
 
-    public void train(String filePath, int epochs, double learningRate) {
+    public void train(String filePath) {
         List<double[]> inputs = positionPersistenceManager.loadPositions(filePath).get("inputs");
         List<double[]> outputs = positionPersistenceManager.loadPositions(filePath).get("outputs");
+        double learningRate = 1 / (double) inputs.size();
 
         for (int epoch = 0; epoch < inputs.size(); epoch++) {
             for (int i = 0; i < inputs.size(); i++) {
@@ -63,5 +64,6 @@ public class NeuralNetworkTrainer {
         for (int j = 0; j < output.length; j++) {
             error[j] = output[j] - predictedOutput[j];
         }
+        return error;
     }
 }
