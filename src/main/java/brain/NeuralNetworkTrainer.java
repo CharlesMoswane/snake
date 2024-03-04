@@ -39,7 +39,7 @@ public class NeuralNetworkTrainer {
                         Neuron neuron = layer.getNeurons()[neuronIndex];
 
                         // Calculate derivative of the error with respect to the weights
-                        double delta = error[neuronIndex] * neuron.getActivationFunction().applyDerivative(predictedOutput[neuronIndex]);
+                        double delta = error[neuronIndex] * ActivationFunctions.sigmoidDerivative.apply(predictedOutput[neuronIndex]);
 
                         // Update weights
                         double[] weights = neuron.getWeights();
