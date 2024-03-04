@@ -45,7 +45,8 @@ public class NeuralNetworkTrainer {
                         double[] weights = neuron.getWeights();
                         for (int weightIndex = 0; weightIndex < weights.length; weightIndex++) {
                             nextError[weightIndex] += weights[weightIndex] * delta;
-                            weights[weightIndex] += learningRate * delta * (layerIndex > 0 ? neuralNetwork.getLayers().get(layerIndex - 1).getNeurons().get(weightIndex).getOutput() : input[weightIndex]);
+                            weights[weightIndex] += learningRate * delta * (layerIndex > 0 ? neuralNetwork.getLayers().
+                                    get(layerIndex - 1).getNeurons()[weightIndex].getValue() : input[weightIndex]);
                         }
                     }
 
