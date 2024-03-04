@@ -11,11 +11,12 @@ import java.util.Timer;
 public class Main {
 
     public static void main(String[] args){
-        startTraining();
-//        Trained = 500 + 1000 times already
+//        startTraining();
+//        First Model Trained = 500 + 1000 * 2 times already
+//        Second Model Trained = 4 + 100 + 1000 times already
 //        repeatTraining(1000);
-        Game game = new Game(false);
 //        Game game = new Game(true);
+        Game game = new Game(false);
         game.start();
     }
 
@@ -36,7 +37,7 @@ public class Main {
         PositionPersistenceManager positionPersistenceManager = new PositionPersistenceManager(dir.getAbsolutePath());
         ModelPersistenceManager modelPersistenceManager = new ModelPersistenceManager();
 //        modelPersistenceManager.saveModelToJsonFile(brain, dir + "\\model.json");
-        NeuralNetwork brain = modelPersistenceManager.loadModelFromJsonFile(dir + "\\trained-model.json");
+        NeuralNetwork brain = modelPersistenceManager.loadModelFromJsonFile(dir + "\\model.json");
         NeuralNetworkTrainer neuralNetworkTrainer = new NeuralNetworkTrainer(brain, positionPersistenceManager);
         System.out.println("Training neural network...");
 
