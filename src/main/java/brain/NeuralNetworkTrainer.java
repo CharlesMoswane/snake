@@ -33,9 +33,9 @@ public class NeuralNetworkTrainer {
                 // Backpropagation
                 for (int layerIndex = neuralNetwork.getLayers().size() - 1; layerIndex >= 0; layerIndex--) {
                     Layer layer = neuralNetwork.getLayers().get(layerIndex);
-                    double[] nextError = new double[layer.getNeurons().get(0).getWeights().length];
+                    double[] nextError = new double[layer.getNeurons()[0].getWeights().length];
 
-                    for (int neuronIndex = 0; neuronIndex < layer.getNeurons().size(); neuronIndex++) {
+                    for (int neuronIndex = 0; neuronIndex < layer.getNeurons().length; neuronIndex++) {
                         Neuron neuron = layer.getNeurons()[neuronIndex];
 
                         // Calculate derivative of the error with respect to the weights
