@@ -11,9 +11,6 @@ public class Controller {
     private NeuralNetwork brain;
 
     public Controller(int inputNodes, int hiddenNodes, int outputNodes) {
-        brain = new NeuralNetwork(inputNodes, new int[]{hiddenNodes, hiddenNodes, outputNodes},
-                                    ActivationFunctions.sigmoid);
-
 //        Date currentDate = new Date();
 //        String timestamp = new SimpleDateFormat("yyyy-MM-dd HH-mm").format(currentDate);
         File dir = new File("C:\\Users\\cmosw\\Desktop\\OneDrive\\My Documents\\8. Creation" +
@@ -21,10 +18,14 @@ public class Controller {
         if (!dir.exists()) {
             dir.mkdirs();
         }
-
         ModelPersistenceManager modelPersistenceManager = new ModelPersistenceManager();
+
 //        modelPersistenceManager.saveModelToJsonFile(brain, dir + "\\model.json");
-        brain = modelPersistenceManager.loadModelFromJsonFile(dir + "\\model.json");
+//        brain = modelPersistenceManager.loadModelFromJsonFile(dir + "\\model.json");
+        brain = modelPersistenceManager.loadModelFromJsonFile(dir + "\\trained-model.json");
+
+//        brain = new NeuralNetwork(inputNodes, new int[]{hiddenNodes, hiddenNodes, outputNodes},
+//                ActivationFunctions.sigmoid);
     }
 
     public Direction getDirection(int[] input) {

@@ -20,29 +20,9 @@ public class NeuralNetworkTrainer {
     }
 
     public void train(String filePath) {
-        List<double[]> inputs = new ArrayList<>();
-        List<double[]> outputs = new ArrayList<>();
+        List<double[]> inputs = positionPersistenceManager.loadPositions(filePath).get("inputs");
+        List<double[]> outputs = positionPersistenceManager.loadPositions(filePath).get("outputs");
 
-        try {
-            Scanner scanner = new Scanner(new File(filePath));
-            while (scanner.hasNextLine()) {
-                String line = scanner.nextLine();
-                String[] parts = line.split(",");
-                double[] input = new double[4];
-                double[] output = new double[1];
-
-                for (int i = 0; i < 4; i++) {
-                    input[i] = Double.parseDouble(parts[i]);
-                }
-
-                output[0] = Double.parseDouble(parts[4]);
-
-                inputs.add(input);
-                outputs.add(output);
-            }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
 
         for (int i = 0; i < inputs.size(); i++) {
             double[] input = inputs.get(i);
@@ -59,7 +39,7 @@ public class NeuralNetworkTrainer {
                     double[] newWeights = new double[weights.length];
 
                     for(int j = 0; j < weights.length; j++){
-                        newWeights[j] = weights[j] + 0.01 * error;
+                        newWeights[j] = weights[j] + 0.1 * error;
                     }
 
                     neuron.setWeights(newWeights);
@@ -67,6 +47,6 @@ public class NeuralNetworkTrainer {
             }
         }
 
-        modelPersistenceManager.saveModelToJsonFile(neuralNetwork,"\"C:\\Users\\cmosw\\Desktop\\OneDrive\\My Documents\\8. Creation\\1. My Projects\\1. AI\\1. Snake\\1. Data\\models\\trained-model.json\"");
+        modelPersistenceManager.saveModelToJsonFile(neuralNetwork,"C:\\Users\\cmosw\\Desktop\\OneDrive\\My Documents\\8. Creation\\1. My Projects\\1. AI\\1. Snake\\1. Data\\models\\trained-model.json");
     }
 }
