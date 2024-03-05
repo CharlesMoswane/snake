@@ -23,8 +23,8 @@ public class Controller {
         }
 
         ModelPersistenceManager modelPersistenceManager = new ModelPersistenceManager();
-        modelPersistenceManager.saveModelToJsonFile(brain, dir + "\\model.json");
-//        brain = modelPersistenceManager.loadModelFromJsonFile(dir + "\\model.json");
+//        modelPersistenceManager.saveModelToJsonFile(brain, dir + "\\model.json");
+        brain = modelPersistenceManager.loadModelFromJsonFile(dir + "\\model.json");
     }
 
     public Direction getDirection(int[] input) {

@@ -67,8 +67,9 @@ public class ModelPersistenceManager {
      */
     public NeuralNetwork loadModelFromJsonFile(String filePath) {
         try (FileReader reader = new FileReader(filePath)) {
+            Type activationFunctionType = new TypeToken<ActivationFunction<Double, Double>>(){}.getType();
             Gson gson = new GsonBuilder()
-                    .registerTypeAdapter(ActivationFunction.class, new ActivationFunctionAdapter())
+                    .registerTypeAdapter(activationFunctionType, new ActivationFunctionAdapter())
                     .create();
             return gson.fromJson(reader, NeuralNetwork.class);
         } catch (IOException e) {

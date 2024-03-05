@@ -1,5 +1,7 @@
 package game;
 
+import data.ModelPersistenceManager;
+import data.PositionPersistenceManager;
 import snake.Snake;
 import snake.SnakeComponent;
 import snake.SnakeFood;
@@ -21,6 +23,7 @@ public class Board extends JFrame implements KeyListener {
     private final int boardSize;
     private final String timestamp;
     private final File dir;
+    private PositionPersistenceManager positionPersistenceManager;
 
     public Board(Snake snake, SnakeFood food, int boardSize) {
         setTitle("SnakeGui.Snake");
@@ -41,6 +44,8 @@ public class Board extends JFrame implements KeyListener {
         if (!dir.exists()){
             dir.mkdirs();
         }
+
+        positionPersistenceManager = new PositionPersistenceManager(dir.getAbsolutePath());
 
         drawBoard();
         generateFrame();
@@ -93,27 +98,22 @@ public class Board extends JFrame implements KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
-        try(BufferedWriter writer = new BufferedWriter(new FileWriter(dir + "\\keylog" + timestamp + ".txt", true))){
-            switch (e.getKeyCode()){
-                case 37:
-                    snake.setDirection(Direction.LEFT);
-                    break;
-                case 38:
-                    snake.setDirection(Direction.UP);
-                    break;
-                case 39:
-                    snake.setDirection(Direction.RIGHT);
-                    break;
-                case 40:
-                    snake.setDirection(Direction.DOWN);
-                    break;
-            }
-            writer.write(snake + ", " + food + "\n");
-        } catch (Exception ex){
-            ex.printStackTrace();
+        switch (e.getKeyCode()){
+            case 37:
+                snake.setDirection(Direction.LEFT);
+                break;
+            case 38:
+                snake.setDirection(Direction.UP);
+                break;
+            case 39:
+                snake.setDirection(Direction.RIGHT);
+                break;
+            case 40:
+                snake.setDirection(Direction.DOWN);
+                break;
         }
 
-        generateFrame();
+        positionPersistenceManager.logPosition(snake, food);
     }
 
     @Override
