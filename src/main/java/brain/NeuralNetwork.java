@@ -24,5 +24,11 @@ public class NeuralNetwork {
         return values;
     }
 
+    public List<Layer> getLayers() {
+        return layers;
+    }
 
+    public void setLayers(List<Layer> layers) {
+        this.layers = layers;
+    }
 }
