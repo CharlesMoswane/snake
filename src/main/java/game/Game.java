@@ -21,7 +21,7 @@ public class Game implements ActionListener {
         snake = new Snake(7,6,5, boardSize);
         food = new SnakeFood(boardSize);
         board = new Board(snake, food, boardSize);
-        timer = new Timer(200, this);
+        timer = new Timer(100, this);
         board.setVisible(true);
     }
 

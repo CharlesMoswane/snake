@@ -4,7 +4,7 @@ import java.security.SecureRandom;
 
 public class SnakeFood {
 
-    private final SecureRandom randomNumbers;
+    private transient final SecureRandom randomNumbers;
 
     private final int boardSize;
     private int xPos;
