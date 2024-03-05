@@ -1,5 +1,6 @@
 package brain;
 
+import data.ModelPersistenceManager;
 import data.PositionPersistenceManager;
 
 import java.io.File;
@@ -11,6 +12,7 @@ import java.util.Scanner;
 public class NeuralNetworkTrainer {
     private NeuralNetwork neuralNetwork;
     private PositionPersistenceManager positionPersistenceManager;
+    private ModelPersistenceManager modelPersistenceManager = new ModelPersistenceManager();
 
     public NeuralNetworkTrainer(NeuralNetwork neuralNetwork, PositionPersistenceManager positionPersistenceManager) {
         this.neuralNetwork = neuralNetwork;
@@ -53,13 +55,18 @@ public class NeuralNetworkTrainer {
             // This is a simplified example and does not include the actual implementation of gradient descent
             for (Layer layer : neuralNetwork.getLayers()) {
                 for (Neuron neuron : layer.getNeurons()) {
-                    for (Weight weight : neuron.getWeights()) {
-                        weight.setValue(weight.getValue() + 0.01 * error);
+                    double[] weights = neuron.getWeights();
+                    double[] newWeights = new double[weights.length];
+
+                    for(int j = 0; j < weights.length; j++){
+                        newWeights[j] = weights[j] + 0.01 * error;
                     }
+
+                    neuron.setWeights(newWeights);
                 }
             }
         }
 
-        positionPersistenceManager.saveModel(neuralNetwork);
+        modelPersistenceManager.saveModelToJsonFile(neuralNetwork,"\"C:\\Users\\cmosw\\Desktop\\OneDrive\\My Documents\\8. Creation\\1. My Projects\\1. AI\\1. Snake\\1. Data\\models\\trained-model.json\"");
     }
 }

@@ -49,6 +49,10 @@ public class Snake {
         snakeBody.removeLast();
     }
 
+    public Direction getDirection() {
+        return direction;
+    }
+
     public void setDirection(Direction direction) {
         this.direction = direction;
     }
