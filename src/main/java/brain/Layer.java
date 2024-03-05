@@ -19,4 +19,20 @@ public class Layer {
         }
         return values;
     }
+
+    public ActivationFunction<Double, Double> getActivationFunction() {
+        return activationFunction;
+    }
+
+    public void setActivationFunction(ActivationFunction<Double, Double> activationFunction) {
+        this.activationFunction = activationFunction;
+    }
+
+    public Neuron[] getNeurons() {
+        return neurons;
+    }
+
+    public void setNeurons(Neuron[] neurons) {
+        this.neurons = neurons;
+    }
 }

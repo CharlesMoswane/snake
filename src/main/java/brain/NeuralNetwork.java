@@ -23,4 +23,6 @@ public class NeuralNetwork {
         }
         return values;
     }
+
+
 }
