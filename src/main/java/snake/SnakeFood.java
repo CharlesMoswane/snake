@@ -30,4 +30,12 @@ public class SnakeFood {
     public int getYPos() {
         return yPos;
     }
+
+    @Override
+    public String toString() {
+        return "SnakeFood{" +
+                "xPos=" + xPos +
+                ", yPos=" + yPos +
+                '}';
+    }
 }
