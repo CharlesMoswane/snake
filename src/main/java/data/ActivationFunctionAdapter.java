@@ -15,9 +15,9 @@ public class ActivationFunctionAdapter extends TypeAdapter<ActivationFunction<Do
         System.out.println("Writing ActivationFunction");
         out.beginObject();
         if (value != null) {
-            out.name("value").value(value.getClass().getName());
+            out.name("name").value("sigmoid");
         } else {
-            out.name("value").value("null");
+            out.name("name").value("null");
         }
         out.endObject();
     }
@@ -25,25 +25,25 @@ public class ActivationFunctionAdapter extends TypeAdapter<ActivationFunction<Do
     @Override
     public ActivationFunction<Double, Double> read(JsonReader in) throws IOException {
         in.beginObject();
-        String value = null;
+        String name = null;
         while (in.hasNext()) {
             switch (in.nextName()) {
-                case "value":
-                    value = in.nextString();
+                case "name":
+                    name = in.nextString();
                     break;
             }
         }
         in.endObject();
 
-        if (value == null) {
-            throw new IOException("Missing value of ActivationFunction");
+        if (name == null) {
+            throw new IOException("Missing name of ActivationFunction");
         }
 
         // Create an instance of the class
-        if (value.equals(ActivationFunctions.sigmoid.getClass().getName())) {
+        if (name.equals("sigmoid")) {
             return ActivationFunctions.sigmoid;
         } else {
-            throw new IOException("Unknown value of ActivationFunction: " + value);
+            throw new IOException("Unknown name of ActivationFunction: " + name);
         }
     }
 }
