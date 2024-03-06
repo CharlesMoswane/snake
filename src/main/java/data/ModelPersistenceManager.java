@@ -1,10 +1,17 @@
 package data;
 
+import brain.ActivationFunction;
 import brain.NeuralNetwork;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
+
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.lang.reflect.Type;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 //@author Charles Moswane
 public class ModelPersistenceManager {
@@ -16,7 +23,11 @@ public class ModelPersistenceManager {
      * @return The JSON string representation of the model.
      */
     private String serializeToJson(NeuralNetwork network) {
-        Gson gson = new Gson();
+        Type activationFunctionType = new TypeToken<ActivationFunction<Double, Double>>(){}.getType();
+
+        Gson gson = new GsonBuilder()
+                .registerTypeAdapter(activationFunctionType, new ActivationFunctionAdapter())
+                .create();
         return gson.toJson(network);
     }
 
@@ -42,7 +53,9 @@ public class ModelPersistenceManager {
      * @return The deserialized neural network model.
      */
     private NeuralNetwork deserializeFromJson(String json) {
-        Gson gson = new Gson();
+        Gson gson = new GsonBuilder()
+                .registerTypeAdapter(ActivationFunction.class, new ActivationFunctionAdapter())
+                .create();
         return gson.fromJson(json, NeuralNetwork.class);
     }
 
@@ -54,7 +67,9 @@ public class ModelPersistenceManager {
      */
     public NeuralNetwork loadModelFromJsonFile(String filePath) {
         try (FileReader reader = new FileReader(filePath)) {
-            Gson gson = new Gson();
+            Gson gson = new GsonBuilder()
+                    .registerTypeAdapter(ActivationFunction.class, new ActivationFunctionAdapter())
+                    .create();
             return gson.fromJson(reader, NeuralNetwork.class);
         } catch (IOException e) {
             e.printStackTrace();

@@ -1,8 +1,8 @@
 package brain;
 
 public class Layer {
-    Neuron[] neurons;
     ActivationFunction<Double, Double> activationFunction;
+    Neuron[] neurons;
 
     public Layer(int numNeurons, int numInputs, ActivationFunction<Double, Double> activationFunction) {
         neurons = new Neuron[numNeurons];
