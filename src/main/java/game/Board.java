@@ -93,7 +93,7 @@ public class Board extends JFrame implements KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
-        try(BufferedWriter writer = new BufferedWriter(new FileWriter(dir + "keylog" + timestamp + ".txt", true))){
+        try(BufferedWriter writer = new BufferedWriter(new FileWriter(dir + "\\keylog" + timestamp + ".txt", true))){
             switch (e.getKeyCode()){
                 case 37:
                     snake.setDirection(Direction.LEFT);
