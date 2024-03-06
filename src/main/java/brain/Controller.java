@@ -9,8 +9,8 @@ public class Controller {
     private NeuralNetwork brain;
 
     public Controller(int inputNodes, int hiddenNodes, int outputNodes) {
-        brain = new NeuralNetwork(inputNodes, new int[]{hiddenNodes, hiddenNodes, outputNodes},
-                                    ActivationFunctions.sigmoid);
+//        brain = new NeuralNetwork(inputNodes, new int[]{hiddenNodes, hiddenNodes, outputNodes},
+//                                    ActivationFunctions.sigmoid);
 
         File dir = new File("C:\\Users\\cmosw\\Desktop\\OneDrive\\My Documents\\8. Creation" +
                             "\\1. My Projects\\1. AI\\1. Snake\\1. Data\\models\\");
@@ -19,7 +19,8 @@ public class Controller {
         }
 
         ModelPersistenceManager modelPersistenceManager = new ModelPersistenceManager();
-        modelPersistenceManager.saveModelToJsonFile(brain, dir + "\\model.json");
+//        modelPersistenceManager.saveModelToJsonFile(brain, dir + "\\model.json");
+        brain = modelPersistenceManager.loadModelFromJsonFile(dir + "\\model.json");
     }
 
     public Direction getDirection(int[] input) {

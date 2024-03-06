@@ -38,10 +38,10 @@ public class Game implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-//        Controller controller = new Controller(4,14,4);
-//        Direction direction = controller.getDirection((new int[]{ food.getXPos(), food.getYPos(), snake.getSnake().getFirst().getX(), snake.getSnake().getFirst().getY()}));
-//        System.out.println(direction);
-//        snake.setDirection(direction);
+        Controller controller = new Controller(4,14,4);
+        Direction direction = controller.getDirection((new int[]{ food.getXPos(), food.getYPos(), snake.getSnake().getFirst().getX(), snake.getSnake().getFirst().getY()}));
+        System.out.println(direction);
+        snake.setDirection(direction);
         board.generateFrame();
     }
 }
