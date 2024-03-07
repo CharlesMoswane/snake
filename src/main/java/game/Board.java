@@ -64,7 +64,7 @@ public class Board extends JFrame implements KeyListener {
 
         if ((food.getXPos() == snake.getSnake().getLast().getX()) && (food.getYPos() == snake.getSnake().getLast().getY())){
             snake.eat(food);
-            food = new SnakeFood(boardSize);
+            food.generateNewFood();
         }
 
         drawSnake();

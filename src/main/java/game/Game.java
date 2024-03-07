@@ -9,13 +9,16 @@ import java.awt.event.ActionListener;
 
 public class Game implements ActionListener {
     private Board board;
+    private final Timer timer;
+    p
+
     public Game(){
         Board board = new Board();
+        timer = new Timer(200, this);
         board.setVisible(true);
     }
 
     public void start(){
-        Timer timer = new Timer(200, this);
         timer.start();
     }
 
