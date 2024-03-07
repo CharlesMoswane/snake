@@ -32,7 +32,7 @@ public class Board extends JFrame implements KeyListener {
         addKeyListener(this);
     }
 
-    public void drawBoard() {
+    private void drawBoard() {
         JPanel panel = new JPanel();
         panel.setLayout(new java.awt.GridLayout(boardSize, boardSize));
 
@@ -48,7 +48,7 @@ public class Board extends JFrame implements KeyListener {
         add(panel);
     }
 
-    public void drawSnake() {
+    private void drawSnake() {
         for (SnakeComponent snakeComponent : snake.getSnake()) {
             board[snakeComponent.getX()][snakeComponent.getY()].setVisible(true);
         }
