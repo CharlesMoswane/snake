@@ -2,18 +2,23 @@ package game;
 
 import brain.Controller;
 import enums.Direction;
+import snake.Snake;
+import snake.SnakeFood;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Game implements ActionListener {
-    private Board board;
     private final Timer timer;
-    p
+    private final Snake snake;
+    private final SnakeFood food;
 
     public Game(){
-        Board board = new Board();
+        int boardSize = 20;
+        snake = new Snake(7,6,5, boardSize);
+        food = new SnakeFood(boardSize);
+        Board board = new Board(snake, food, boardSize);
         timer = new Timer(200, this);
         board.setVisible(true);
     }

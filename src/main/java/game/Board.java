@@ -1,20 +1,17 @@
 package game;
 
-import brain.Controller;
 import snake.Snake;
 import snake.SnakeComponent;
 import snake.SnakeFood;
 import enums.Direction;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class Board extends JFrame implements KeyListener {
     private final JLabel[][] board;
-    private SnakeFood food;
+    private final SnakeFood food;
     private final Snake snake;
     private final int boardSize;
 
