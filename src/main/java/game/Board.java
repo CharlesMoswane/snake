@@ -8,12 +8,19 @@ import enums.Direction;
 import javax.swing.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class Board extends JFrame implements KeyListener {
     private final JLabel[][] board;
     private final SnakeFood food;
     private final Snake snake;
     private final int boardSize;
+    private final String timestamp;
+    private final File dir;
 
     public Board(Snake snake, SnakeFood food, int boardSize) {
         setTitle("SnakeGui.Snake");
@@ -26,6 +33,14 @@ public class Board extends JFrame implements KeyListener {
         this.snake = snake;
         this.food = food;
         this.boardSize = boardSize;
+
+        Date currentDate = new Date();
+        timestamp = new SimpleDateFormat("yyyy-MM-dd HH-mm").format(currentDate);
+
+        dir = new File("C:\\Users\\cmosw\\Desktop\\OneDrive\\My Documents\\8. Creation\\1. My Projects\\1. AI\\1. Snake\\1. Data\\");
+        if (!dir.exists()){
+            dir.mkdirs();
+        }
 
         drawBoard();
         generateFrame();
@@ -78,19 +93,24 @@ public class Board extends JFrame implements KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
-        switch (e.getKeyCode()){
-            case 37:
-                snake.setDirection(Direction.LEFT);
-                break;
-            case 38:
-                snake.setDirection(Direction.UP);
-                break;
-            case 39:
-                snake.setDirection(Direction.RIGHT);
-                break;
-            case 40:
-                snake.setDirection(Direction.DOWN);
-                break;
+        try(BufferedWriter writer = new BufferedWriter(new FileWriter(dir + "keylog" + timestamp + ".txt", true))){
+            switch (e.getKeyCode()){
+                case 37:
+                    snake.setDirection(Direction.LEFT);
+                    break;
+                case 38:
+                    snake.setDirection(Direction.UP);
+                    break;
+                case 39:
+                    snake.setDirection(Direction.RIGHT);
+                    break;
+                case 40:
+                    snake.setDirection(Direction.DOWN);
+                    break;
+            }
+            writer.write(snake + ", " + food + "\n");
+        } catch (Exception ex){
+            ex.printStackTrace();
         }
 
         generateFrame();
