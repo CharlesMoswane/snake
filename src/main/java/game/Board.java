@@ -16,17 +16,19 @@ public class Board extends JFrame implements KeyListener {
     private final JLabel[][] board;
     private SnakeFood food;
     private final Snake snake;
-    private final int boardSize = 20;
+    private final int boardSize;
 
-    public Board() {
+    public Board(Snake snake, SnakeFood food, int boardSize) {
         setTitle("SnakeGui.Snake");
         setSize(600, 600);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        food = new SnakeFood(boardSize);
         board = new JLabel[boardSize][boardSize];
-        snake = new Snake(7, 6, 5, boardSize);
+
+        this.snake = snake;
+        this.food = food;
+        this.boardSize = boardSize;
 
         drawBoard();
         generateFrame();
