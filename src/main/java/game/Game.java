@@ -29,7 +29,7 @@ public class Game implements ActionListener {
     }
 
     public void pause(){
-
+        timer.stop();
     }
 
     public void end(){
