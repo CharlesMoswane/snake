@@ -1,7 +1,7 @@
 package snake;
 
 public class SnakeComponent {
-    private int xPos, yPos;
+    private final int xPos, yPos;
 
     public SnakeComponent(int xPos, int yPos) {
         this.xPos = xPos;
@@ -14,5 +14,13 @@ public class SnakeComponent {
 
     public int getY() {
         return yPos;
+    }
+
+    @Override
+    public String toString() {
+        return "SnakeComponent{" +
+                "xPos=" + xPos +
+                ", yPos=" + yPos +
+                '}';
     }
 }

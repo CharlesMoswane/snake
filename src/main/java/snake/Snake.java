@@ -56,5 +56,14 @@ public class Snake {
     public LinkedList<SnakeComponent> getSnake() {
         return snakeBody;
     }
+
+    @Override
+    public String toString() {
+        return "Snake{" +
+                "snakeHead=" + snakeBody.getFirst() +
+                ", direction=" + direction +
+                ", boardSize=" + boardSize +
+                '}';
+    }
 }
 
