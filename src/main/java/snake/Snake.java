@@ -8,7 +8,7 @@ public class Snake {
 
     private final LinkedList<SnakeComponent> snakeBody;
     private Direction direction;
-    private int boardSize;
+    private final int boardSize;
 
     public Snake(int x, int y, int snakeLength, int boardSize) {
         snakeBody = new LinkedList<>();
