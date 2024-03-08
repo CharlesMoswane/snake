@@ -12,13 +12,11 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-public class Board extends JFrame implements ActionListener, KeyListener {
+public class Board extends JFrame implements KeyListener {
     private final JLabel[][] board;
     private SnakeFood food;
     private final Snake snake;
     private final int boardSize = 20;
-
-    Controller controller;
 
     public Board() {
         setTitle("SnakeGui.Snake");
@@ -29,14 +27,10 @@ public class Board extends JFrame implements ActionListener, KeyListener {
         food = new SnakeFood(boardSize);
         board = new JLabel[boardSize][boardSize];
         snake = new Snake(7, 6, 5, boardSize);
-        controller = new Controller(4,14,4);
 
         drawBoard();
         generateFrame();
         addKeyListener(this);
-
-        Timer timer = new Timer(200, this);
-        timer.start();
     }
 
     public void drawBoard() {
@@ -77,13 +71,6 @@ public class Board extends JFrame implements ActionListener, KeyListener {
         board[snake.getSnake().getFirst().getX()][snake.getSnake().getFirst().getY()].setText("O");
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        Direction direction = controller.getDirection((new int[]{ food.getXPos(), food.getYPos(), snake.getSnake().getFirst().getX(), snake.getSnake().getFirst().getY()}));
-        System.out.println(direction);
-        snake.setDirection(direction);
-        generateFrame();
-    }
 
     @Override
     public void keyTyped(KeyEvent e) {
