@@ -79,7 +79,7 @@ public class Board extends JFrame implements ActionListener, KeyListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        Direction direction = controller.getDirection(new int[]{food.getXPos(), food.getYPos(), snake.getSnake().getFirst().getX(), snake.getSnake().getFirst().getY()});
+        Direction direction = controller.getDirection((new int[]{ food.getXPos(), food.getYPos(), snake.getSnake().getFirst().getX(), snake.getSnake().getFirst().getY()}));
         System.out.println(direction);
         snake.setDirection(direction);
         generateFrame();

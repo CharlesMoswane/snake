@@ -10,8 +10,8 @@ public class Controller {
                                     ActivationFunctions.sigmoid);
     }
 
-    public Direction getDirection(double[] input) {
-        double[] output = brain.forward(input);
+    public Direction getDirection(int[] input) {
+        double[] output = brain.forward(intToDouble(input));
         int maxIndex = 0;
         for (int i = 1; i < output.length; i++) {
             if (output[i] > output[maxIndex]) {
@@ -19,5 +19,13 @@ public class Controller {
             }
         }
         return Direction.values()[maxIndex];
+    }
+
+    public double[] intToDouble(int[] input) {
+        double[] output = new double[input.length];
+        for (int i = 0; i < input.length; i++) {
+            output[i] = input[i];
+        }
+        return output;
     }
 }
