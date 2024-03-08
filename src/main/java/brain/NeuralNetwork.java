@@ -4,25 +4,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class NeuralNetwork {
-    private Layer inputLayer;
-    private Layer hiddenLayer;
-    private Layer outputLayer;
-
     private List<Layer> layers = new ArrayList<>();
 
-    public NeuralNetwork(int inputNodes, int hiddenNodes, int outputNodes) {
-        inputLayer = new Layer(inputNodes, 0, (v) -> v);
-        hiddenLayer = new Layer(hiddenNodes, inputNodes, (v) -> 1 / (1 + Math.exp(-v)));
-        outputLayer = new Layer(outputNodes, hiddenNodes, (v) -> 1 / (1 + Math.exp(-v)));
+    public NeuralNetwork(int inputSize, int[] layerSizes, ActivationFunction<Double, Double> activationFunction) {
+        // First layer
+        layers.add(new Layer(layerSizes[0], inputSize, activationFunction));
+
+        // Subsequent layers
+        for (int i = 1; i < layerSizes.length; i++) {
+            layers.add(new Layer(layerSizes[i], layerSizes[i - 1], activationFunction));
+        }
     }
 
-    public double[] query(int[] inputs) {
-        double[] inputValues = new double[inputs.length];
-        for (int i = 0; i < inputs.length; i++) {
-            inputValues[i] = inputs[i];
+    public double[] forward(double[] inputs) {
+        double[] values = inputs;
+        for (Layer layer : layers) {
+            values = layer.calculateValues(values);
         }
-        double[] hiddenValues = hiddenLayer.calculateValues(inputValues);
-        double[] outputValues = outputLayer.calculateValues(hiddenValues);
-        return outputValues;
+        return values;
     }
 }

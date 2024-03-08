@@ -15,7 +15,7 @@ public class Layer {
     public double[] calculateValues(double[] inputs) {
         double[] values = new double[neurons.length];
         for (int i = 0; i < neurons.length; i++) {
-            values[i] = neurons[i].calculateValue(inputs, activationFunction);
+            values[i] = neurons[i].activate(inputs, activationFunction);
         }
         return values;
     }
