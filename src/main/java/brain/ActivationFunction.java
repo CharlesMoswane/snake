@@ -9,7 +9,7 @@ public class ActivationFunction {
 
     // ReLU activation function
     public static final Function<Double, Double> relu = x -> Math.max(0, x);
-    public static final Function<Double, Double> reluDerivative = x -> (double) (x > 0 ? 1 : 0);
+    public static final Function<Double, Double> reluDerivative = x -> (x > 0 ? 1.0 : 0);
 
     // Hyperbolic tangent activation function
     public static final Function<Double, Double> tanh = Math::tanh;
@@ -19,11 +19,7 @@ public class ActivationFunction {
     public static final Function<Double, Double> leakyRelu = x -> Math.max(0.01 * x, x);
     public static final Function<Double, Double> leakyReluDerivative = x ->  x > 0 ? 1 : 0.01;
 
-    public static double linear(double x) {
-        return x;
-    }
-
-    public static double linearDerivative(double x) {
-        return 1;
-    }
+    // Linear activation function
+    public static final Function<Double, Double> linear = x -> x;
+    public static final Function<Double, Double> linearDerivative = x -> 1.0;
 }
