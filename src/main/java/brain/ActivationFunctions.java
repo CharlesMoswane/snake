@@ -4,7 +4,7 @@ import java.util.function.Function;
 
 public class ActivationFunctions {
     // Sigmoid activation function
-    public static final Function<Double, Double> sigmoid = x -> 1 / (1 + Math.exp(-x));
+    public static final ActivationFunction<Double, Double> sigmoid = x -> 1 / (1 + Math.exp(-x));
     public static final Function<Double, Double> sigmoidDerivative = x -> x * (1 - x);
 
     // ReLU activation function

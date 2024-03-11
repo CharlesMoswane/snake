@@ -1,6 +1,6 @@
 package brain;
 
 @FunctionalInterface
-public interface ActivationFunction {
-    double activate(double x);
+public interface ActivationFunction<T,V> {
+    T activate(double V);
 }
