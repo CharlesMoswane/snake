@@ -13,6 +13,16 @@ public class Neuron {
         bias = Math.random() * 2 - 1;
     }
 
+    public double calculateValue(double[] inputs, ActivationFunctions activationFunction) {
+        double sum = 0;
+        for (int i = 0; i < inputs.length; i++) {
+            sum += inputs[i] * weights[i];
+        }
+        sum += bias;
+        value = activationFunction.apply(sum);
+        return value;
+    }
+
     public double getValue() {
         return value;
     }
