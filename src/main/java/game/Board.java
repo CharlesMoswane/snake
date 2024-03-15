@@ -1,5 +1,6 @@
 package game;
 
+import brain.Controller;
 import snake.Snake;
 import snake.SnakeComponent;
 import snake.SnakeFood;
@@ -17,6 +18,8 @@ public class Board extends JFrame implements ActionListener, KeyListener {
     private final Snake snake;
     private final int boardSize = 20;
 
+    Controller controller;
+
     public Board() {
         setTitle("SnakeGui.Snake");
         setSize(600, 600);
@@ -26,6 +29,7 @@ public class Board extends JFrame implements ActionListener, KeyListener {
         food = new SnakeFood(boardSize);
         board = new JLabel[boardSize][boardSize];
         snake = new Snake(7, 6, 5, boardSize);
+        controller = new Controller(4,14,4,1);
 
         drawBoard();
         generateFrame();
@@ -75,6 +79,9 @@ public class Board extends JFrame implements ActionListener, KeyListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        Direction direction = controller.getDirection(new int[]{food.getXPos(), food.getYPos(), snake.getSnake().getFirst().getX(), snake.getSnake().getFirst().getY()});
+        System.out.println(direction);
+        snake.setDirection(direction);
         generateFrame();
     }
 
