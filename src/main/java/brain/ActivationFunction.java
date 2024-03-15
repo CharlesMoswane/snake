@@ -1,13 +1,11 @@
 package brain;
 
-public class ActivationFunction {
-    public static double sigmoid(double x) {
-        return 1 / (1 + Math.exp(-x));
-    }
+import java.util.function.Function;
 
-    public static double sigmoidDerivative(double x) {
-        return x * (1 - x);
-    }
+public class ActivationFunction {
+    // Sigmoid activation function
+    public static final Function<Double, Double> SIGMOID = x -> 1 / (1 + Math.exp(-x));
+    public static final Function<Double, Double> SIGMOID_DERIVATIVE = x -> x * (1 - x);
 
     public static double tanh(double x) {
         return Math.tanh(x);
