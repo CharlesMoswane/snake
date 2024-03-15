@@ -4,12 +4,12 @@ import java.util.function.Function;
 
 public class ActivationFunction {
     // Sigmoid activation function
-    public static final Function<Double, Double> SIGMOID = x -> 1 / (1 + Math.exp(-x));
-    public static final Function<Double, Double> SIGMOID_DERIVATIVE = x -> x * (1 - x);
+    public static final Function<Double, Double> sigmoid = x -> 1 / (1 + Math.exp(-x));
+    public static final Function<Double, Double> sigmoidDerivative = x -> x * (1 - x);
 
     // ReLU activation function
-    public static final Function<Double, Double> RELU = x -> Math.max(0, x);
-    public static final Function<Double, Double> RELU_DERIVATIVE = x -> x > 0 ? 1 : 0;
+    public static final Function<Double, Double> relu = x -> Math.max(0, x);
+    public static final Function<Double, Double> getReluDerivative = x -> (double) (x > 0 ? 1 : 0);
 
     public static double tanh(double x) {
         return Math.tanh(x);
