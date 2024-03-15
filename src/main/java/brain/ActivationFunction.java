@@ -9,15 +9,11 @@ public class ActivationFunction {
 
     // ReLU activation function
     public static final Function<Double, Double> relu = x -> Math.max(0, x);
-    public static final Function<Double, Double> getReluDerivative = x -> (double) (x > 0 ? 1 : 0);
+    public static final Function<Double, Double> reluDerivative = x -> (double) (x > 0 ? 1 : 0);
 
-    public static double tanh(double x) {
-        return Math.tanh(x);
-    }
-
-    public static double tanhDerivative(double x) {
-        return 1 - (x * x);
-    }
+    // Hyperbolic tangent activation function
+    public static final Function<Double, Double> tanh = Math::tanh;
+    public static final Function<Double, Double> tanhDerivative = x -> 1 - (x * x);
 
     public static double leakyRelu(double x) {
         return Math.max(0.01 * x, x);
