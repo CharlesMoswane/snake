@@ -15,13 +15,9 @@ public class ActivationFunction {
     public static final Function<Double, Double> tanh = Math::tanh;
     public static final Function<Double, Double> tanhDerivative = x -> 1 - (x * x);
 
-    public static double leakyRelu(double x) {
-        return Math.max(0.01 * x, x);
-    }
-
-    public static double leakyReluDerivative(double x) {
-        return x > 0 ? 1 : 0.01;
-    }
+    // Leaky ReLU activation function
+    public static final Function<Double, Double> leakyRelu = x -> Math.max(0.01 * x, x);
+    public static final Function<Double, Double> leakyReluDerivative = x ->  x > 0 ? 1 : 0.01;
 
     public static double linear(double x) {
         return x;
