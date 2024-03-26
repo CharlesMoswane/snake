@@ -30,7 +30,7 @@ public class NeuralNetwork {
         }
     }
 
-    public double[] query(double[] inputs) {
+    public double[] query(int[] inputs) {
         double[] hiddenOutputs = new double[hiddenNodes];
         double[] finalOutputs = new double[outputNodes];
 
