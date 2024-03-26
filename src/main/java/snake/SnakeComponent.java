@@ -1,3 +1,5 @@
+package snake;
+
 public class SnakeComponent {
     private int xPos, yPos;
 

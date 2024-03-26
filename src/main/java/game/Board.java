@@ -1,3 +1,10 @@
+package game;
+
+import snake.Snake;
+import snake.SnakeComponent;
+import snake.SnakeFood;
+import enums.Direction;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -11,7 +18,7 @@ public class Board extends JFrame implements ActionListener, KeyListener {
     private final int boardSize = 20;
 
     public Board() {
-        setTitle("Snake");
+        setTitle("SnakeGui.Snake");
         setSize(600, 600);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

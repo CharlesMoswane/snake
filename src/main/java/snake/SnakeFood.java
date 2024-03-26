@@ -1,3 +1,5 @@
+package snake;
+
 import java.security.SecureRandom;
 
 public class SnakeFood {

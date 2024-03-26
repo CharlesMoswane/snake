@@ -1,4 +1,4 @@
-import javax.swing.JOptionPane;
+import game.Game;
 
 public class Main {
 
