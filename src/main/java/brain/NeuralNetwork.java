@@ -1,6 +1,6 @@
-package neuralNet;
+package brain;
 
-public class neuralNetwork {
+public class NeuralNetwork {
     private int inputNodes;
     private int hiddenNodes;
     private int outputNodes;
@@ -8,7 +8,7 @@ public class neuralNetwork {
     private double[][] weightsInputHidden;
     private double[][] weightsHiddenOutput;
 
-    public neuralNetwork(int inputNodes, int hiddenNodes, int outputNodes, double learningRate) {
+    public NeuralNetwork(int inputNodes, int hiddenNodes, int outputNodes, double learningRate) {
         this.inputNodes = inputNodes;
         this.hiddenNodes = hiddenNodes;
         this.outputNodes = outputNodes;
