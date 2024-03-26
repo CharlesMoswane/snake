@@ -110,5 +110,95 @@ public class neuralNetwork {
         }
     }
 
+    public double[][] getWeightsInputHidden() {
+        return weightsInputHidden;
+    }
 
+    public double[][] getWeightsHiddenOutput() {
+        return weightsHiddenOutput;
+    }
+
+    public void setWeightsInputHidden(double[][] weightsInputHidden) {
+        this.weightsInputHidden = weightsInputHidden;
+    }
+
+    public void setWeightsHiddenOutput(double[][] weightsHiddenOutput) {
+        this.weightsHiddenOutput = weightsHiddenOutput;
+    }
+
+    public void setLearningRate(double learningRate) {
+        this.learningRate = learningRate;
+    }
+
+    public double getLearningRate() {
+        return learningRate;
+    }
+
+    public int getInputNodes() {
+        return inputNodes;
+    }
+
+    public int getHiddenNodes() {
+        return hiddenNodes;
+    }
+
+    public int getOutputNodes() {
+        return outputNodes;
+    }
+
+    public void setInputNodes(int inputNodes) {
+        this.inputNodes = inputNodes;
+    }
+
+    public void setHiddenNodes(int hiddenNodes) {
+        this.hiddenNodes = hiddenNodes;
+    }
+
+    public void setOutputNodes(int outputNodes) {
+        this.outputNodes = outputNodes;
+    }
+
+    public void setWeights(double[][] weightsInputHidden, double[][] weightsHiddenOutput) {
+        this.weightsInputHidden = weightsInputHidden;
+        this.weightsHiddenOutput = weightsHiddenOutput;
+    }
+
+    public void setWeights(int inputNodes, int hiddenNodes, int outputNodes) {
+        this.inputNodes = inputNodes;
+        this.hiddenNodes = hiddenNodes;
+        this.outputNodes = outputNodes;
+    }
+
+    public void setWeights(double[][] weightsInputHidden, double[][] weightsHiddenOutput, int inputNodes, int hiddenNodes, int outputNodes) {
+        this.weightsInputHidden = weightsInputHidden;
+        this.weightsHiddenOutput = weightsHiddenOutput;
+        this.inputNodes = inputNodes;
+        this.hiddenNodes = hiddenNodes;
+        this.outputNodes = outputNodes;
+    }
+
+    public void setWeights(int inputNodes, int hiddenNodes, int outputNodes, double learningRate) {
+        this.inputNodes = inputNodes;
+        this.hiddenNodes = hiddenNodes;
+        this.outputNodes = outputNodes;
+        this.learningRate = learningRate;
+    }
+
+    public void setWeights(double[][] weightsInputHidden, double[][] weightsHiddenOutput, int inputNodes, int hiddenNodes, int outputNodes, double learningRate) {
+        this.weightsInputHidden = weightsInputHidden;
+        this.weightsHiddenOutput = weightsHiddenOutput;
+        this.inputNodes = inputNodes;
+        this.hiddenNodes = hiddenNodes;
+        this.outputNodes = outputNodes;
+        this.learningRate = learningRate;
+    }
+
+    public void setWeights(int inputNodes, int hiddenNodes, int outputNodes, double learningRate, double[][] weightsInputHidden, double[][] weightsHiddenOutput) {
+        this.inputNodes = inputNodes;
+        this.hiddenNodes = hiddenNodes;
+        this.outputNodes = outputNodes;
+        this.learningRate = learningRate;
+        this.weightsInputHidden = weightsInputHidden;
+        this.weightsHiddenOutput = weightsHiddenOutput;
+    }
 }
