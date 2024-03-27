@@ -18,7 +18,7 @@ public class Board extends JFrame implements ActionListener, KeyListener {
 
         food = new SnakeFood(boardSize);
         board = new JLabel[boardSize][boardSize];
-        snake = new Snake(7, 6, 5);
+        snake = new Snake(7, 6, 5, boardSize);
 
         drawBoard();
         generateFrame();

@@ -26,7 +26,7 @@ public class SnakeGUI extends JFrame implements ActionListener, KeyListener {
         addKeyListener(this);
 
         food = new SnakeFood(boardSize);
-        snake = new Snake(7,3, boardSize);
+        snake = new Snake(7,3,5, boardSize);
         snakeBody = snake.getSnake();
 
         setGrid();
