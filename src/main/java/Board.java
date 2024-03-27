@@ -55,7 +55,7 @@ public class Board extends JFrame implements ActionListener, KeyListener {
     private void generateFrame(){
         board[food.getXPos()][food.getYPos()].setVisible(true);
 
-        board[snake.getSnake().getLast().getX()][snake.getSnake().getFirst().getY()].setVisible(false);
+        board[snake.getSnake().getLast().getX()][snake.getSnake().getLast().getY()].setVisible(false);
         board[snake.getSnake().getFirst().getX()][snake.getSnake().getFirst().getY()].setText("X");
         snake.move();
 
@@ -64,7 +64,7 @@ public class Board extends JFrame implements ActionListener, KeyListener {
             food = new SnakeFood(boardSize);
         }
 
-        drawSnake();
+//        drawSnake();
         board[snake.getSnake().getFirst().getX()][snake.getSnake().getFirst().getY()].setText("O");
 //        board[snake.getSnake().getFirst().getX()][snake.getSnake().getFirst().getY()].setVisible(true);
     }
@@ -95,7 +95,6 @@ public class Board extends JFrame implements ActionListener, KeyListener {
                 break;
         }
 
-        snake.move();
         generateFrame();
     }
 
