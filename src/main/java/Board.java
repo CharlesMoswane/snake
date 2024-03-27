@@ -7,8 +7,8 @@ import java.awt.event.KeyListener;
 public class Board extends JFrame implements ActionListener, KeyListener {
     private final JLabel[][] board;
     private SnakeFood food;
-    private Snake snake;
-    private int boardSize = 20;
+    private final Snake snake;
+    private final int boardSize = 20;
 
     public Board() {
         setTitle("Snake");
@@ -61,7 +61,6 @@ public class Board extends JFrame implements ActionListener, KeyListener {
 
         drawSnake();
         board[snake.getSnake().getFirst().getX()][snake.getSnake().getFirst().getY()].setText("O");
-//        board[snake.getSnake().getFirst().getX()][snake.getSnake().getFirst().getY()].setVisible(true);
     }
 
     @Override
