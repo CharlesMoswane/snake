@@ -17,12 +17,12 @@ public class Board extends JFrame implements ActionListener, KeyListener {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         food = new SnakeFood(boardSize);
-
         board = new JLabel[boardSize][boardSize];
-        drawBoard();
-        addKeyListener(this);
         snake = new Snake(7, 6, 5);
-        drawSnake();
+
+        drawBoard();
+        generateFrame();
+        addKeyListener(this);
     }
 
     public void drawBoard() {
@@ -79,19 +79,15 @@ public class Board extends JFrame implements ActionListener, KeyListener {
         switch (e.getKeyCode()){
             case 37:
                 snake.setDirection(Direction.LEFT);
-                System.out.println("LEFT");
                 break;
             case 38:
                 snake.setDirection(Direction.UP);
-                System.out.println("UP");
                 break;
             case 39:
                 snake.setDirection(Direction.RIGHT);
-                System.out.println("RIGHT");
                 break;
             case 40:
                 snake.setDirection(Direction.DOWN);
-                System.out.println("DOWN");
                 break;
         }
 
