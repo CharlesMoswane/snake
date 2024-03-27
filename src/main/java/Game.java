@@ -8,8 +8,6 @@ public class Game {
     }
 
     public void start(){
-        Timer timer = new Timer(200, board);
-        timer.start();
     }
 
     public void pause(){

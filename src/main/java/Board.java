@@ -23,6 +23,9 @@ public class Board extends JFrame implements ActionListener, KeyListener {
         drawBoard();
         generateFrame();
         addKeyListener(this);
+
+        Timer timer = new Timer(200, this);
+        timer.start();
     }
 
     public void drawBoard() {
@@ -47,7 +50,7 @@ public class Board extends JFrame implements ActionListener, KeyListener {
         }
     }
 
-    private void generateFrame(){
+    public void generateFrame(){
         board[food.getXPos()][food.getYPos()].setVisible(true);
 
         board[snake.getSnake().getLast().getX()][snake.getSnake().getLast().getY()].setVisible(false);
