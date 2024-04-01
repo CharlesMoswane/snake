@@ -10,7 +10,8 @@ public class Board extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         board = new JLabel[20][20];
-        drawBoard();
+//        drawBoard();
+        drawSnake(new Snake(7, 8, 5));
     }
 
     public void drawBoard() {
