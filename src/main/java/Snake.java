@@ -10,14 +10,17 @@ public class Snake {
         for (int i = 0; i < snakeLength; i++) {
             snakeBody.add(new SnakeComponent(x, y - i));
         }
-        this.direction = Direction.RIGHT;
+        direction = Direction.RIGHT;
     }
 
     public void eat(SnakeFood food) {
     }
 
     public void move() {
-
+        SnakeComponent head = snakeBody.getFirst();
+        SnakeComponent newHead = new SnakeComponent(head.getX() + direction.getX(), head.getY() + direction.getY());
+        snakeBody.addFirst(newHead);
+        snakeBody.removeLast();
     }
 
     public void setDirection(Direction direction) {
