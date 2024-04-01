@@ -16,6 +16,8 @@ public class Board extends JFrame implements ActionListener, KeyListener {
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+        food = new SnakeFood(boardSize);
+
         board = new JLabel[boardSize][boardSize];
         drawBoard();
         addKeyListener(this);
@@ -91,6 +93,9 @@ public class Board extends JFrame implements ActionListener, KeyListener {
                 System.out.println("DOWN");
                 break;
         }
+
+        snake.move();
+        generateFrame();
     }
 
     @Override
