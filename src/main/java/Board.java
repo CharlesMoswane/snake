@@ -55,8 +55,8 @@ public class Board extends JFrame implements ActionListener, KeyListener {
     private void generateFrame(){
         board[food.getXPos()][food.getYPos()].setVisible(true);
 
-        board[snake.getSnake().getFirst().getX()][snake.getSnake().getFirst().getY()].setVisible(false);
-        board[snake.getSnake().getLast().getX()][snake.getSnake().getLast().getY()].setText("X");
+        board[snake.getSnake().getLast().getX()][snake.getSnake().getFirst().getY()].setVisible(false);
+        board[snake.getSnake().getFirst().getX()][snake.getSnake().getFirst().getY()].setText("X");
         snake.move();
 
         if ((food.getXPos() == snake.getSnake().getLast().getX()) && (food.getYPos() == snake.getSnake().getLast().getY())){
@@ -64,8 +64,9 @@ public class Board extends JFrame implements ActionListener, KeyListener {
             food = new SnakeFood(boardSize);
         }
 
-        board[snake.getSnake().getLast().getX()][snake.getSnake().getLast().getY()].setVisible(true);
-        board[snake.getSnake().getLast().getX()][snake.getSnake().getLast().getY()].setText("O");
+        drawSnake();
+        board[snake.getSnake().getFirst().getX()][snake.getSnake().getFirst().getY()].setText("O");
+//        board[snake.getSnake().getFirst().getX()][snake.getSnake().getFirst().getY()].setVisible(true);
     }
 
     @Override

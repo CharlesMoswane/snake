@@ -4,7 +4,7 @@ public enum Direction {
     LEFT,
     RIGHT;
 
-    public int getX() {
+    public int getY() {
         if (this == LEFT)
             return -1;
         if (this == RIGHT)
@@ -12,7 +12,7 @@ public enum Direction {
         return 0;
     }
 
-    public int getY() {
+    public int getX() {
         if (this == UP)
             return -1;
         if (this == DOWN)

@@ -18,7 +18,11 @@ public class Snake {
 
     public void move() {
         SnakeComponent head = snakeBody.getFirst();
+        System.out.println("Head: " + head.getX() + " " + head.getY() + " Direction: " + direction.getX() + " " + direction.getY());
+        System.out.println(direction);
         SnakeComponent newHead = new SnakeComponent(head.getX() + direction.getX(), head.getY() + direction.getY());
+        System.out.println("New Head: " + newHead.getX() + " " + newHead.getY() + " Direction: " + direction.getX() + " " + direction.getY());
+        System.out.println(direction);
         snakeBody.addFirst(newHead);
         snakeBody.removeLast();
     }
